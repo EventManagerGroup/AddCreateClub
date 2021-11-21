@@ -1,10 +1,13 @@
 
+import React from 'react';
 import CardAC from './components/CardAC';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
     <div>
-      <CardAC />
+      <Sidebar />
+      showCardAC()
     </div>
   );
 }
