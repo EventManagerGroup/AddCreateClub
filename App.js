@@ -1,10 +1,17 @@
 
-import CardAC from './components/CardAC';
+import React from 'react';
+import Login from './components/Login';
+import Sidebar from './components/Sidebar';
 
 function App() {
     return (
     <div>
-      <CardAC />
+      <div>
+        <Sidebar />
+      </div>
+      <div>
+        <Login />
+      </div>
     </div>
   );
 }

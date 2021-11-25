@@ -24,7 +24,7 @@ function CardAC(props){
   }
 
   return (
-    <div className='cardAC'>
+    <div className='card'>
       Add/Create Club
       <div className='actions'>
         <button className='btn' onClick={openAdd}>Add Club</button>
