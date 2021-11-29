@@ -1,0 +1,5 @@
+/Component/AddClub.js
+Patch request in "handleSubmit" - Append new club to user's registered clubs.
+
+/Component/EventMaker.js
+Patch request in "handleSubmit" - Append new event to club's events.
