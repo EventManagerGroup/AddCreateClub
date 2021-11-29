@@ -1,3 +1,4 @@
+v0.3
 /Component/AddClub.js
 Patch request in "handleSubmit" - Append new club to user's registered clubs.
 
