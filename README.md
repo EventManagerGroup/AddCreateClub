@@ -27,6 +27,10 @@ Install 'router-react-dom':
 
 npm install react-router-dom@6
 
+>(v1.2)
+
+Fixed axios-implementations to be compatible API gateway (given by Backend team) instead of JSON server.
+
 >(v1.1)
 
 Fixed routes, axios-implementation, and a bit of css.
