@@ -44,15 +44,15 @@ export const ViewClubEvents = () => {
           event_id: callEvent.data[0].event_id
         }
       }).then ((response) => {
-        if(response.error == ""){
-          if(response.added == true) {
+        if(response.data[0].error == ""){
+          if(response.data[0].added == true) {
             alert("Event: " + callEvent.data[0].event_id + " was successfully subscribed to!");
           }
-          else if (response.removed == true){
+          else if (response.data[0].removed == true){
             alert("Event: " + callEvent.data[0].event_id + " was successfully removed from subscription!");
           }
         }
-        else alert("Error: " + response.error)
+        else alert("Error: " + response.data[0].error)
       }).catch (error => alert(error));
     }
     handleHelper(event);

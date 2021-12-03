@@ -11,7 +11,7 @@ import ViewClubAnnouncements from './Component/ViewClubAnnouncements';
 import Settings from './Component/Settings';
 import Signout from './Component/Signout';
 
-// http://dwcql5bi10.execute-api.us-west-1.amazonaws.com/v1
+// https://dwcql5bi10.execute-api.us-west-1.amazonaws.com/v1
 export var url = "http://localhost:3001";
 
 function App() {
