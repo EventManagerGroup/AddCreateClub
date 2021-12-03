@@ -12,17 +12,17 @@ export const ViewClubs = () => {
 
   useEffect(() => {
     async function getClubs(){
-      const response = await axios.get(url+"/club", {
+      axios.get(url+"/club", {
         params:{
           user_id: JSON.parse(localStorage.getItem("user")),
           filter: filter
         }
-      }).then(response => {
-        if (response.data[0].error == "") {
-          setClubArr(response.data[0].club_list);
+      }).then((response) => {
+        if (response.data.error == "") {
+          setClubArr(response.data.club_list);
         }
         else {  // display error, then go to previous page
-          alert("Error: " + response.data[0].error);
+          alert("Error: " + response.data.error);
           navigate(-1);
         }
       }).catch(error => {

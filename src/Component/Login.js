@@ -23,21 +23,21 @@ export const Login = () => {
   const handleSubmit = async e => {
     e.preventDefault();
     // send the id and password to the server
-    const response = await axios.get(url+"/user", {
+    axios.get(url+"/users", {
       params: {
         email: email,
         password: password
       }
-    }).then(response => {
-      if(response.data[0].error == "") {
+    }).then((response) => {
+      if(response.data.error === "") {
         // set the state of the user
-        setUser(response.data[0].user_id);
+        setUser(response.data.user_id);
         // store the user in localStorage
-        localStorage.setItem("user", JSON.stringify(response.data[0].user_id));
+        localStorage.setItem("user", JSON.stringify(response.data.user_id));
         // go to homepage
         navigate("/home/ac");
       }
-      else alert("Error: " + response.error);
+      else alert("Error: " + response.data.error);
     }).catch(error => {
       alert(error);
     });

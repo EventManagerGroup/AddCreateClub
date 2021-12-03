@@ -12,17 +12,17 @@ function AnnouncementMaker(props){
 
   const handleSubmit = async e =>{
     e.preventDefault();
-    const response = await axios.post("http://localhost:3001/clubs", {
+    axios.post("http://localhost:3001/clubs", {
       user_id: JSON.parse(localStorage.getItem("user")),
       club_id: clubID,
       title: title,
       description: desc,
-    }).then (response => {
-      if (response.error == "") {
+    }).then ((response) => {
+      if (response.data.error == "") {
         alert("Announcement " + title + " was successful!");
         navigate("/clubs/" + clubID + "/announcements");
       }
-      else (alert("Error: " + response.error));
+      else (alert("Error: " + response.data.error));
     }).catch (error => {
       alert(error);
       navigate("/clubs/" + clubID + "/announcements");

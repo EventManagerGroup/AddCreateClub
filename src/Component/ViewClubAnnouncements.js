@@ -25,8 +25,8 @@ export const ViewClubAnnouncements = () => {
           limit: limit
         }
       }).then((response) => {
-        if (response.data[0].error == "") setAnnos(response.data[0].announcements_list);
-        else alert("Error: " + response.data[0].error);
+        if (response.data.error == "") setAnnos(response.data.announcements_list);
+        else alert("Error: " + response.data.error);
       }).catch (error => {
         alert(error);
         navigate(-1);

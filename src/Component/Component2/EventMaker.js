@@ -22,19 +22,19 @@ function EventMaker(props){
   const handleSubmit = async e =>{
     e.preventDefault();
     setPlannedDate(dateYear+"-"+dateMonth+"-"+dateDay+"T"+dateHour+":"+dateMinute+":"+dateSecond);
-    const response = await axios.post("http://localhost:3001/clubs", {
+    axios.post("http://localhost:3001/clubs", {
       user_id: JSON.parse(localStorage.getItem("user")),
       club_id: clubID,
       title: title,
       description: desc,
       event_capacity: capacity,
       planned_date: plannedDate,
-    }).then (response => {
-      if (response.error == "") {
+    }).then ((response) => {
+      if (response.data.error == "") {
         alert("Event " + title + " was successful!");
         navigate("/clubs/" + clubID + "/events");
       }
-      else (alert("Error: " + response.error));
+      else (alert("Error: " + response.data.error));
     }).catch (error => {
       alert(error);
       navigate("/clubs/" + clubID + "/events");

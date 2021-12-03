@@ -12,7 +12,8 @@ import Settings from './Component/Settings';
 import Signout from './Component/Signout';
 
 // https://dwcql5bi10.execute-api.us-west-1.amazonaws.com/v1
-export var url = "http://localhost:3001";
+// http://localhost:3001
+export var url = "https://dwcql5bi10.execute-api.us-west-1.amazonaws.com/v1";
 
 function App() {
   return(

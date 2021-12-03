@@ -13,7 +13,7 @@ function Register(){
   // send form to server to create account
   const handleSubmit = async e =>{
     e.preventDefault();
-    const response = await axios.post(url + "/users", {
+    axios.post(url + "/users", {
       params: {
         first_name: fName,
         last_name: lName,
@@ -21,13 +21,13 @@ function Register(){
         password: pw
       }
 
-    }).then( response => {
-      if(response.error == ""){
+    }).then( (response) => {
+      if(response.data.error == ""){
         alert("Account Creation Successful!");
         navigate("/");
       }
       else{
-        alert("Error: " + response.error)
+        alert("Error: " + response.data.error)
       }
     }).catch( error => {
       alert(error)
