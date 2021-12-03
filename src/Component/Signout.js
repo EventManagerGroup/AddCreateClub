@@ -6,7 +6,7 @@ function Signout(){
   // logout user
   const handleLogout = () => {
     localStorage.clear();
-    navigate("");
+    navigate("/");
   };
 
   return (

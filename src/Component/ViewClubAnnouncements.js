@@ -17,16 +17,16 @@ export const ViewClubAnnouncements = () => {
 
   useEffect(() => {
     async function getEvents(){
-      const response = await axios.get(url+"/announcement", {
+      axios.get(url+"/announcement", {
         params:{
           user_id: JSON.parse(localStorage.getItem("user")),
           club_id: clubID,
           filter: filter,
           limit: limit
         }
-      }).then(resposne => {
-        if (response.error == "") setAnnos(response.announcements_list);
-        else alert("Error: " + response.error);
+      }).then((response) => {
+        if (response.data[0].error == "") setAnnos(response.data[0].announcements_list);
+        else alert("Error: " + response.data[0].error);
       }).catch (error => {
         alert(error);
         navigate(-1);
@@ -46,7 +46,10 @@ export const ViewClubAnnouncements = () => {
 
   return (
     <div>
-        <div>
+        <div className = "card">
+          <button className='btn btn--alt'onClick={() => navigate(-1)}>Go Back</button>
+        </div>
+        <div className = "card">
           <form>
             <label htmlFor="filter">Search by name: </label>
             <input
@@ -58,7 +61,7 @@ export const ViewClubAnnouncements = () => {
             <button type ="submit">Enter</button>
           </form>
         </div>
-        <div>
+        <div className = "card">
           <form>
             <label htmlFor="limit">Change viewing limit: </label>
             <input
@@ -70,19 +73,19 @@ export const ViewClubAnnouncements = () => {
             <button type ="submit">Enter</button>
           </form>
         </div>
-        <div>
+        <div className = "card">
           <p>{clubID}'s Announcements:</p>
-        </div>
-        <div className='actions'>
-          <button className='btn' onClick={openAnnoMaker}>Create an Announcement</button>
+          <div className='actions'>
+            <button className='btn' onClick={openAnnoMaker}>Create an Announcement</button>
+          </div>
         </div>
         {annoMakerOpen && <AnnouncementMaker onCancel={closeAnnoMaker}/>}
         {annoMakerOpen && <Backdrop onCancel={closeAnnoMaker}/>}
         <div>
           {annos.map((anno) => (
             <div className = "card">
-              <p>{anno.title} (@{anno.announcement_id})</p>
-              <p>From {anno.club_id} @ {anno.date_generated}</p>
+              <p>Title: "{anno.title}" ID:{anno.announcement_id}</p>
+              <p>(From {anno.club_id} @ {anno.date_generated})</p>
               <p> {anno.description} </p>
             </div>
           ))}

@@ -11,6 +11,7 @@ import ViewClubAnnouncements from './Component/ViewClubAnnouncements';
 import Settings from './Component/Settings';
 import Signout from './Component/Signout';
 
+// http://dwcql5bi10.execute-api.us-west-1.amazonaws.com/v1
 export var url = "http://localhost:3001";
 
 function App() {
@@ -19,13 +20,14 @@ function App() {
         <Routes>
           <Route path = "" element = {<Login />} />
           <Route path = "/register" element = {<Register />} />
-          <Route path = "/home/*" element= {<Sidebar />} />
-          <Route path = "/home/ac" element={<CardAC/>} />
-          <Route path = "/home/clubs" element= {<ViewClubs />} />
-          <Route path = "/home/clubs/:clubID/events" element= {<ViewClubEvents />} />
-          <Route path = "/home/clubs/:clubID/announcements" element={<ViewClubAnnouncements/>} />
-          <Route path = "/home/settings" element= {<Settings />} />
-          <Route path = "/home/signout" element= {<Signout />} />
+          <Route path = "/home/*" element= {<Sidebar />} >
+            <Route path = "ac" element={<CardAC/>} />
+            <Route path = "clubs" element= {<ViewClubs />} />
+            <Route path = "clubs/:clubID/events" element= {<ViewClubEvents />} />
+            <Route path = "clubs/:clubID/announcements" element={<ViewClubAnnouncements/>} />
+            <Route path = "settings" element= {<Settings />} />
+            <Route path = "signout" element= {<Signout />} />
+          </Route>
         </Routes>
     </BrowserRouter>
   );

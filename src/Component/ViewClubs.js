@@ -6,9 +6,9 @@ import PromoteGenMember from './Component2/PromoteGenMember';
 import Backdrop from './Component2/Backdrop';
 
 export const ViewClubs = () => {
-  const [filter, setFilter] = useEffect("");
-  const [clubArr, setClubArr] = useEffect([]);
-  const navigate = useNavigate();
+  const [filter, setFilter] = useState("");
+  const [clubArr, setClubArr] = useState([]);
+  let navigate = useNavigate();
 
   useEffect(() => {
     async function getClubs(){
@@ -18,25 +18,28 @@ export const ViewClubs = () => {
           filter: filter
         }
       }).then(response => {
-        if (response.error == "") setClubArr(response.club_list);
+        if (response.data[0].error == "") {
+          setClubArr(response.data[0].club_list);
+        }
         else {  // display error, then go to previous page
-          alert("Error: " + response.error);
+          alert("Error: " + response.data[0].error);
           navigate(-1);
         }
       }).catch(error => {
         alert(error);
       })
     }
+    getClubs();
   })
 
   // navigate to view events of particular club
   function goClubEvents(club) {
-    navigate("/clubs/" + club.id + "/events");
+    navigate(club.club_id + "/events");
   }
 
   // navigate to view events of particular club
   function goClubAnnouncements(club) {
-    navigate("/clubs/" + club.id + "/announcements");
+    navigate(club.club_id + "/announcements");
   }
 
   const handleSelect = (e) => {
@@ -54,22 +57,24 @@ export const ViewClubs = () => {
 
   return (
     <div>
-      <form>
-        <label htmlFor="filter">Search by name: </label>
-        <input
-          type="text"
-          value={filter}
-          placeholder="search club by name"
+      <div className ="card">
+        <form>
+          <label htmlFor="filter">Search by name: </label>
+          <input
+            type="text"
+            value={filter}
+            placeholder="search club by name"
           onChange={({ target }) => setFilter(target.value)}
-        />
-        <button type ="submit">Enter</button>
-      </form>
+          />
+          <button type ="submit">Enter</button>
+        </form>
+      </div>
       {clubArr.map((club) => (
         <div className = "card">
           {club.name} (@{club.club_id})
           <div>
             <button className='btn btn--alt' onClick={() => goClubEvents(club)}> View Events </button>
-            <button className='btn btn--alt' onClick={() => goClubAnnouncements(club)}> View Events </button>
+            <button className='btn btn--alt' onClick={() => goClubAnnouncements(club)}> View Announcements </button>
           </div>
           <div>
             <div>

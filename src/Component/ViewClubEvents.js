@@ -17,15 +17,15 @@ export const ViewClubEvents = () => {
 
   useEffect(() => {
     async function getEvents(){
-      const response = await axios.get(url+"/event", {
+      axios.get(url+"/event", {
         params:{
           user_id: JSON.parse(localStorage.getItem("user")),
           club_id: clubID,
           filter: filter,
           limit: limit
         }
-      }).then(resposne => {
-        if (response.error == "") setEvents(response.event_list);
+      }).then((response) => {
+        if (response.data[0].error == "") setEvents(response.data[0].event_list);
         else alert("Error: " + response.error);
       }).catch (error => {
         alert(error);
@@ -37,19 +37,19 @@ export const ViewClubEvents = () => {
 
   function handleJoinStatus(event){
     async function handleHelper(callEvent){
-      const response = await axios.put(url+"/event", {
+      axios.put(url+"/event", {
         params:{
           user_id: JSON.parse(localStorage.getItem("user")),
           club_id: clubID,
-          event_id: callEvent.event_id
+          event_id: callEvent.data[0].event_id
         }
-      }).then (response => {
+      }).then ((response) => {
         if(response.error == ""){
           if(response.added == true) {
-            alert("Event: " + callEvent.event_id + " was successfully subscribed to!");
+            alert("Event: " + callEvent.data[0].event_id + " was successfully subscribed to!");
           }
           else if (response.removed == true){
-            alert("Event: " + callEvent.event_id + " was successfully removed from subscription!");
+            alert("Event: " + callEvent.data[0].event_id + " was successfully removed from subscription!");
           }
         }
         else alert("Error: " + response.error)
@@ -69,7 +69,10 @@ export const ViewClubEvents = () => {
 
   return (
     <div>
-        <div>
+        <div className = "card">
+          <button className='btn btn--alt'onClick={() => navigate(-1)}>Go Back</button>
+        </div>
+        <div className = "card">
           <form>
             <label htmlFor="filter">Search by name: </label>
             <input
@@ -81,7 +84,7 @@ export const ViewClubEvents = () => {
             <button type ="submit">Enter</button>
           </form>
         </div>
-        <div>
+        <div className = "card" >
           <form>
             <label htmlFor="limit">Change viewing limit: </label>
             <input
@@ -93,11 +96,11 @@ export const ViewClubEvents = () => {
             <button type ="submit">Enter</button>
           </form>
         </div>
-        <div>
+        <div className = "card">
           <p>{clubID}'s Events:</p>
-        </div>
-        <div className='actions'>
-          <button className='btn' onClick={openEventMaker}>Create an Event</button>
+          <div className='actions'>
+            <button className='btn' onClick={openEventMaker}>Create an Event</button>
+          </div>
         </div>
         {eventMakerOpen && <EventMaker onCancel={closeEventMaker}/>}
         {eventMakerOpen && <Backdrop onCancel={closeEventMaker}/>}
@@ -123,7 +126,7 @@ export const ViewClubEvents = () => {
               </div>
               <div>
                 {event.people_involved.map((person) => (
-                  <p>(person)</p>
+                  <p>{person}</p>
                 ))}
               </div>
             </div>

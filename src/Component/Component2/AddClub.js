@@ -38,7 +38,7 @@ function AddClub(props){
           placeholder="enter your club ID"
           onChange={({ target }) => setClubID(target.value)}
         />
-        <button type ="submit">Enter</button>
+        <button className='btn btn--alt' type ="submit">Enter</button>
       </form>
       <button className='btn btn--alt' onClick={props.onCancel}>Go Back</button>
     </div>

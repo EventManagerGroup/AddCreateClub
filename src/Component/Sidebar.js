@@ -1,4 +1,5 @@
 import {SidebarData} from './Component2/SidebarData';
+import {Outlet} from 'react-router-dom';
 
 function Sidebar(){
   return (
@@ -20,6 +21,9 @@ function Sidebar(){
             );
           })}
         </ul>
+      </div>
+      <div>
+        <Outlet />
       </div>
     </div>
   );

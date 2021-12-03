@@ -64,8 +64,9 @@ function CreateClub(props){
           onChange={({ target }) => setClubDesc(target.value)}
           />
         </div>
-        <button type ="submit">Enter</button>
+        <button className='btn btn--alt' type ="submit">Enter</button>
       </form>
+      <button className='btn btn--alt' onClick={props.onCancel}>Go Back</button>
     </div>
   );
 }

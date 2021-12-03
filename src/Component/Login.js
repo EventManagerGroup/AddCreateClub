@@ -22,19 +22,18 @@ export const Login = () => {
   // login the user after login-form completion
   const handleSubmit = async e => {
     e.preventDefault();
-    const user = {email, password};
     // send the id and password to the server
-    const response = await axios.get(url+"/users", {
+    const response = await axios.get(url+"/user", {
       params: {
-        email: user.email,
-        password: user.password
+        email: email,
+        password: password
       }
     }).then(response => {
-      if(response.error == "") {
+      if(response.data[0].error == "") {
         // set the state of the user
-        setUser(response.user_id);
+        setUser(response.data[0].user_id);
         // store the user in localStorage
-        localStorage.setItem("user", JSON.stringify(response.user_id));
+        localStorage.setItem("user", JSON.stringify(response.data[0].user_id));
         // go to homepage
         navigate("/home/ac");
       }
