@@ -1,19 +1,26 @@
 # EventManagerFE
 All inclusive src folder and relate packages for entire react project (v1.0).
 
->Packages Required
+>Packages Required - Download into react-project directory
 
-Make sure to install node.js to (recommended build, not latest build) run the inputs below in terminal:
+Make sure to install node.js to (recommended build, not latest build) run the inputs (npm) below in terminal:
 
 https://nodejs.org/en/
 
+Install axios:
+
+npm install axios
+
 Install mui icons:
+
 npm install @mui/icons-material
+
 npm install @mui/material
 
 Install react:
 
 npm install @emotion/react
+
 npm install @emotion/styled
 
 Install 'router-react-dom':
