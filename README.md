@@ -15,7 +15,7 @@ npm install react-router-dom@6
 
 //(v1.0)
 All functions have been implemented, along with all of their respective axios requests.
->announcements<
+>announcements
 >events
 >clubs
 >login
