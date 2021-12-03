@@ -11,19 +11,19 @@ function CreateClub(props){
 
   const handleSubmit = async e =>{
     e.preventDefault();
-    const response = await axios.post(url+"/clubs", {
+    axios.post(url+"/clubs", {
       params: {
         user_id: JSON.stringify(localStorage.getItem("user")),
         club_name: clubName,
         board_code: boardCode,
         description: clubDesc,
       }
-    }).then(response => {
+    }).then((response) => {
       if(response.error == "") {
         alert("Club creation successful!");
-        navigate("/home/vclubs/" + response.club_id);
+        navigate("/home/vclubs/" + response.data.club_id);
       }
-      else alert("Error: " + response.error);
+      else alert("Error: " + response.data.error);
     }).catch(error => {
       alert(error);
       navigate(-1);

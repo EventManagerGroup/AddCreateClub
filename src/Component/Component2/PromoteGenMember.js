@@ -12,18 +12,18 @@ function PromoteGenMember(props){
 
   const handleSubmit = async e =>{
     e.preventDefault();
-    const response = await axios.put(url+"/clubmembers", {
+    axios.put(url+"/clubmembers", {
       params:{
         user_id: userID,
         club_id: clubID,
         board_code: boardCode
       }
-    }).then(response => {
-      if (response.error == "") {
+    }).then((response) => {
+      if (response.data.error == "") {
         alert(userID + " was successfully promoted to a board member!");
         navigate("/home/clubs/:clubID")
       }
-      else alert("Error: " + response.error);
+      else alert("Error: " + response.data.error);
     }).catch(error => {
       alert(error);
       navigate(-1);

@@ -9,17 +9,17 @@ function AddClub(props){
 
   const handleSubmit = async e =>{
     e.preventDefault();
-    const response = await axios.post(url+"/clubmembers", {
+    axios.post(url+"/clubmembers", {
       params:{
         user_id: JSON.parse(localStorage.getItem("user")),
         club_id: clubID
       }
-    }).then(response => {
-      if (response.error == "") {
+    }).then((response) => {
+      if (response.data.error == "") {
         alert("Club was successfully joined!");
         navigate("/home/ac")
       }
-      else alert("Error: " + response.error);
+      else alert("Error: " + response.data.error);
     }).catch(error => {
       alert(error);
     });

@@ -25,8 +25,8 @@ export const ViewClubEvents = () => {
           limit: limit
         }
       }).then((response) => {
-        if (response.data[0].error == "") setEvents(response.data[0].event_list);
-        else alert("Error: " + response.error);
+        if (response.data.error == "") setEvents(response.data.event_list);
+        else alert("Error: " + response.data.error);
       }).catch (error => {
         alert(error);
         navigate(-1);
@@ -41,18 +41,18 @@ export const ViewClubEvents = () => {
         params:{
           user_id: JSON.parse(localStorage.getItem("user")),
           club_id: clubID,
-          event_id: callEvent.data[0].event_id
+          event_id: callEvent.data.event_id
         }
       }).then ((response) => {
-        if(response.data[0].error == ""){
-          if(response.data[0].added == true) {
-            alert("Event: " + callEvent.data[0].event_id + " was successfully subscribed to!");
+        if(response.data.error == ""){
+          if(response.data.added == true) {
+            alert("Event: " + callEvent.data.event_id + " was successfully subscribed to!");
           }
           else if (response.data[0].removed == true){
-            alert("Event: " + callEvent.data[0].event_id + " was successfully removed from subscription!");
+            alert("Event: " + callEvent.data.event_id + " was successfully removed from subscription!");
           }
         }
-        else alert("Error: " + response.data[0].error)
+        else alert("Error: " + response.data.error)
       }).catch (error => alert(error));
     }
     handleHelper(event);
