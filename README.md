@@ -1,7 +1,7 @@
 # EventManagerFE
 All inclusive src folder and relate packages for entire react project (v1.0).
 
-~Packages Required~
+//Packages Required
 Install mui icons:
 npm install @mui/icons-material
 npm install @mui/material
@@ -13,7 +13,7 @@ npm install @emotion/styled
 Install 'router-react-dom':
 npm install react-router-dom@6
 
-~(v1.0)~
+//(v1.0)
 All functions have been implemented, along with all of their respective axios requests.
 -announcements
 -events
