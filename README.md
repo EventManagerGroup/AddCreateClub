@@ -27,6 +27,10 @@ Install 'router-react-dom':
 
 npm install react-router-dom@6
 
+>(v1.1)
+
+Fixed routes, axios-implementation, and a bit of css.
+
 >(v1.0)
 
 //All functions have been implemented, along with all of their respective axios requests.
