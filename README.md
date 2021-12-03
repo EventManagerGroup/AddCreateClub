@@ -56,3 +56,15 @@ Current state is untested due to current lacking of front-end to back-end relati
 arrays of [variable] are properly mapped and displayed.
 
 dynamic navigational routes are successfully implemented (ie “/home/clubs/:id/events”)
+
+>(v0.3)
+
+Redesigned program to utilize Router - used to use Windows.pathname yatayata was real bad.
+
+Implemented majority of functions.
+
+Requires heavy CSS.
+
+Requires backend function (patch, put, and delete requests).
+
+Requires implementation of viewing events of clubs.
